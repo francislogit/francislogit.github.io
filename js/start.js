@@ -60,7 +60,7 @@ function fillWebFont(target){
         if(fillText === undefined){
             $(this).text("Lang Not Found.");
         }else{
-            $(this).html(fillText);
+            $(this).html(target[fillText]);
         }
     })
 }
