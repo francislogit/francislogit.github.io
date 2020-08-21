@@ -57,7 +57,7 @@ $(window).on("load",function(){
 function fillWebFont(target){
     $("[data-lang-tx]").each(function(){
         var fillText = $(this).attr("data-lang-tx");
-        if(fillText === undefined){
+        if(target[fillText] === undefined){
             $(this).text("Lang Not Found.");
         }else{
             $(this).html(target[fillText]);
