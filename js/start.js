@@ -31,8 +31,8 @@ Global.FUNC = {
             .done(function( data ) {
                 if(data !== null && data.lang !== undefined){
                     Global.VAR.languageData = data;
-                    if(data.lang.current_web_target !== undefined ){
-                        fillWebFont(data.lang.current_web_target);
+                    if(data.lang[current_web_target] !== undefined ){
+                        fillWebFont(data.lang[current_web_target]);
                     }
                     else{
                         Global.LOG("Get language target error,  target is [" +current_web_target +"]" );
