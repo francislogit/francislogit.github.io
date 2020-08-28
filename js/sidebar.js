@@ -25,12 +25,12 @@ function genSidebar(data){
         if(isLevel.length > 1){
             $("#sidebar").append("<div id='sidebar-level" + isLevel[1] + "' class='sidebar-level'></div>");
             if(parseInt(isLevel[1]) > 1){
-                str += "<span id='goBack" + isLevel[1] + "'></span>"
+                str += "<span id='goBack" + isLevel[1] + "' class='back-item'>Go Back</span>"
             }
             str += "<ul>";
             $.each(data,function(index,side_data){
                 if(parseInt(isLevel[1]) > 1){
-                    $.each(side_data,function(index,side2_data){
+                    $.each(side_data,function(index2,side2_data){
                         str += sidebarTemplate(side2_data, index);
                     });
                 }else{
@@ -57,6 +57,9 @@ function sidebarTemplate(data, index){
         hasSubStr += "<div class='sidebar-text'>" + data.tag + "</div>";
     }
     if(data.link !== undefined){
+        if(secTarget.length == 0){
+            secTarget = data.link.split(".")[1];
+        }
         str += "<li id='" + data.id + "' class='side-item " + data.class + "' target-link='" + data.link + "' obj-title='" + secTarget + "'>" + hasSubStr + "</li>";
     }else{
         str += "<li id='" + data.id + "' class='side-item " + data.class + "' target-url='" + data.url + "' obj-title='" + secTarget + "'>" + hasSubStr + "</li>";
@@ -66,21 +69,41 @@ function sidebarTemplate(data, index){
 }
 function sideEvt(){
     $(".side-item").on("click",function(){
-        console.log("yes");
         var targetLink = $(this).attr("target-link");
         var targetUrl = $(this).attr("target-url");
-        var targetid=$(this).attr("id");
-        var isBack = targetid.split("goBack");
-        if(targetLink!== undefined){
+        if(targetLink !== undefined){
             var level = parseInt(targetLink.split(".")[0].split("level")[1]);
-            $("#sidebar-" + (level - 1)).hide();
-            var tarObj = $(this).attr("obj-title");
-            
-            $("#sidebar-" + level + "[obj-title='" + tarObj + "']").show();
-            $("#sidebar-" + level).find(".side-item").hide();
-            $("#sidebar-" + level).show();
-        }else if(targetUrl){
-            $("#inside_cont").load("inside_page/" + targetUrl);
+            var tarObj = targetLink.split(".")[1];
+            sidebarSwitch((level-1), level, tarObj);
+            if($("#page-url .stop").length > 0){
+                $("#page-url .stop").remove();
+            }
+            $("#page-url").append("<span> > " + $(this).find(".sidebar-text").text() + "</span>");
+        }else if(targetUrl !== undefined){
+            $("#inside-cont").load("inside_page/" + targetUrl);
+            if($("#page-url .stop").length == 0){
+                $("#page-url").append("<span class='stop'> > " + $(this).find(".sidebar-text").text() + "</span>");
+            }
         }
     })
+    $(".back-item").on("click",function(){
+        var currentLevel = parseInt($(this).parents(".sidebar-level").attr("id").split("sidebar-level")[1]);
+        sidebarSwitch(currentLevel,(currentLevel-1));
+        if($("#page-url .stop").length > 0){
+            $("#page-url .stop").remove();
+        }
+        $("#page-url").find("span").last().remove();
+    });
 }
+function sidebarSwitch(currentLevel, targetLevel, targetObj){
+    if(targetLevel < currentLevel){
+        $("#sidebar-level" + currentLevel).hide();
+        $("#sidebar-level" + targetLevel).show();
+    }else{
+        $("#sidebar-level" + currentLevel).hide();
+        $("#sidebar-level" + targetLevel).find(".side-item").hide();
+        $("#sidebar-level" + targetLevel + " li[obj-title='" + targetObj + "']").show();
+        $("#sidebar-level" + targetLevel).show();
+    }
+}
+

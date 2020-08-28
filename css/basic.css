@@ -5,6 +5,64 @@
     font-style: normal;
 }
 
+@keyframes side-item-in-right{
+    from{
+        left:-10rem;
+        opacity: 0;
+    }
+    to{
+        left: 0;
+        opacity: 1;
+    }
+}
+@keyframes side-item-in-left{
+    from{
+        left:10rem;
+        opacity: 0;
+    }
+    to{
+        left: 0;
+        opacity: 1;
+    }
+}
+@keyframes side-item-out-left{
+    from{
+        left:0;
+        opacity: 1;
+    }
+    to{
+        left: -10rem;
+        opacity: 0;
+    }
+}
+@keyframes side-item-out-right{
+    from{
+        left:0;
+        opacity: 1;
+    }
+    to{
+        left: 10rem;
+        opacity: 0;
+    }
+}
+
+.side-item-in-right{
+    animation-name:side-item-in-right;
+    animation-duration: 1s;
+}
+.side-item-in-left{
+    animation-name:side-item-in-left;
+    animation-duration: 1s;
+}
+.side-item-out-left{
+    animation-name:side-item-out-left;
+    animation-duration: 1s;
+}
+.side-item-out-right{
+    animation-name:side-item-out-right;
+    animation-duration: 1s;
+}
+
 body{
     font-family: Alata, sans-serif;
     background-color: #E5E5E5;
@@ -28,7 +86,7 @@ body{
     background-color: white;
     min-width: 980px;
     max-width: 980px;
-    min-height: 20rem;
+    min-height: 35rem;
 }
 
 #header,
@@ -62,13 +120,38 @@ body{
     border: white solid 0.5rem
 }
 
+#inside-cont, 
+#page-url{
+    width: calc( 980px - 14rem);
+    left: 12rem;
+    display: inline-block;
+    position: relative;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-top: #E5E5E5 solid 0.5rem;
+    padding-left: 1rem;
+    border-right: #E5E5E5 solid 0.5rem;
+    margin-bottom: 0.5rem;
+}
+#page-url{
+    height: 1rem;
+}
+#inside-cont{
+    margin-top: -0.5rem;
+    min-height: 32rem;
+}
+
 ul{
     list-style-type: none;
     padding: 0px;
+    margin-top: 0px;
 }
 #sidebar li{
     background-color: white;
     margin-bottom: 0.5rem;
+    line-height: 2.5;
+    border-radius: 10px;
 }
 .sidebar-text{
     text-align: left;
@@ -93,6 +176,23 @@ ul{
 #sidebar #sidebar-level1{
     display: inline-block;
 }
+#sidebar .back-item{
+    background-color: white;
+    margin-bottom: 0.5rem;
+    text-align: left;
+    max-width: 9rem;
+    min-width: 9rem;
+    display: inline-block;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    line-height: 2.5;
+    border-radius: 10px;
+}
+
+.side-item{
+    position: relative;
+}
+
 
 @media(max-width:980px){
     #header, 
