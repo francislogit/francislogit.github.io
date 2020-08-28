@@ -25,7 +25,7 @@
         if ( self.length > 0 ) {
             jQuery.ajax( {
                 url: url,
-                cache: false,
+                cache: false, //20200828 This attribute added by Francis Lo for disabling cache for all loading inside page
                 // If "type" variable is undefined, then "GET" method will be used.
                 // Make value of this field explicit since
                 // user can override it through ajaxSetup method
