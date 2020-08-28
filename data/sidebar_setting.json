@@ -1,0 +1,63 @@
+{
+    "level1":[
+        {
+            "id": "side_introduce",
+            "class": "",
+            "tag": "Introduce",
+            "hasSub": false,
+            "url": "note/introduce.html"
+        },
+        {
+            "id": "side_note",
+            "class": "",
+            "tag":"Note",
+            "hasSub": true,
+            "link": "level2.side2_note"
+        },
+        {
+            "id": "side_solution",
+            "class": "",
+            "tag":"Question solution",
+            "hasSub": true,
+            "link": "level2.side2_solution"
+        }
+    ],
+    "level2":{
+        "side2_note":[
+            {
+                "id": "side_note_1",
+                "class": "",
+                "tag": "20200828 Record",
+                "hasSub": false,
+                "url": "note/ui_note.html"
+            }
+        ],
+        "side2_solution":[
+            {
+                "id": "side2_ui_note",
+                "class": "",
+                "tag": "Brief note",
+                "hasSub": false,
+                "url": "note/ui_note.html"
+            },
+            {
+                "id": "side2_ui_solution_1",
+                "class": "",
+                "tag": "UI part question",
+                "hasSub": true,
+                "link": "level3.side3_solution"
+            }
+        ]
+    },
+    "level3":{
+        "side3_solution":[
+            {
+                "id": "side3_solution_1",
+                "class": "",
+                "tag": "Web Shaking",
+                "hasSub": false,
+                "url": "solution/shaking.html"
+            }
+        ]
+    }
+}

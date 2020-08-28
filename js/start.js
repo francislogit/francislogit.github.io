@@ -51,6 +51,7 @@ Global.FUNC = {
 
 $(window).on("load",function(){
     Global.FUNC.initWebLang("index_default");
+    createSidebar();
 })
 
 

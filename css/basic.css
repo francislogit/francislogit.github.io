@@ -1,9 +1,18 @@
+@font-face {
+    font-family: 'Alata';
+    src: url('font/Alata-Regular.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
 body{
+    font-family: Alata, sans-serif;
     background-color: #E5E5E5;
     font-size: 14px;
     text-align: center;
     position: relative;
     display: inline-block;
+    padding-top: 6%;
 }
 
 
@@ -11,14 +20,14 @@ body{
 #content, 
 #footer{
     text-align: left;
-    min-width: 980px;
-    max-width: 980px;
     display: inline-block;
     position: relative;
 }
 
 #content{
     background-color: white;
+    min-width: 980px;
+    max-width: 980px;
     min-height: 20rem;
 }
 
@@ -27,11 +36,19 @@ body{
     text-align: center;
     background-color: #14213D;
     color: white;
-    height: 5rem;
+    height: 4rem;
+    line-height: 4rem;
+    vertical-align: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    min-width: calc( 980px - 4rem );
+    max-width: calc( 980px - 4rem );
 }
 
 #header{
-    margin-top: 0rem;
+    font-size: 20px;
+    text-align: left;
+    color: goldenrod;/*temp use, since lose relative color design in current device*/
 }
 
 #sidebar{
@@ -45,11 +62,44 @@ body{
     border: white solid 0.5rem
 }
 
+ul{
+    list-style-type: none;
+    padding: 0px;
+}
+#sidebar li{
+    background-color: white;
+    margin-bottom: 0.5rem;
+}
+.sidebar-text{
+    text-align: left;
+    max-width: 7rem;
+    min-width: 7rem;
+    display: inline-block;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+.sidebar-icon{
+    text-align: right;
+    max-width: 1rem;
+    min-width: 1rem;
+    float: right;
+    display: block;
+    padding-right: 0.5rem;
+}
+#sidebar .sidebar-level{
+    display: none;
+    height: 100%;
+}
+#sidebar #sidebar-level1{
+    display: inline-block;
+}
+
 @media(max-width:980px){
     #header, 
     #content, 
     #footer{
-        min-width: 100vw;
+        min-width: calc( 100vw - 4rem );
+        max-width: calc( 100vw - 4rem );
     }
     #sidebar{
         display: none;
