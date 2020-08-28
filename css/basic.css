@@ -153,6 +153,11 @@ ul{
     line-height: 2.5;
     border-radius: 10px;
 }
+#sidebar li:hover,
+#sidebar .back-item:hover
+{
+    border: 1px solid goldenrod;
+}
 .sidebar-text{
     text-align: left;
     max-width: 7rem;
@@ -210,6 +215,9 @@ ul{
         max-height: 100vh;
         box-sizing: border-box;
         min-height: 100vh;
+    }
+    html, body{
+        position: fixed;
     }
     #header, 
     #content, 
