@@ -106,7 +106,7 @@ body{
 #header{
     font-size: 20px;
     text-align: left;
-    color: goldenrod;/*temp use, since lose relative color design in current device*/
+    color: #fca311;/*temp use, since lose relative color design in current device*/
 }
 
 #sidebar{
@@ -153,11 +153,6 @@ ul{
     line-height: 2.5;
     border-radius: 10px;
 }
-#sidebar li:hover,
-#sidebar .back-item:hover
-{
-    border: 1px solid goldenrod;
-}
 .sidebar-text{
     text-align: left;
     max-width: 7rem;
@@ -202,13 +197,21 @@ ul{
     position: absolute;
     top: 15px;
     left: 15px;
-    border: solid 1px goldenrod;
+    border: solid 1px #fca311;
     display: none;
     line-height: 2rem;
     padding-left: 10px;
     padding-right: 10px;
 }
-
+#sidebar li,
+#sidebar .back-item
+{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none; 
+    user-select: none; 
+}
 
 @media(max-width:980px){
     body{

@@ -1,0 +1,15 @@
+::-moz-selection {
+    color: #14213D;
+    background: #fca311;
+}
+::selection {
+    color: #14213D;
+    background: #fca311;
+}
+
+
+#sidebar li:hover,
+#sidebar .back-item:hover
+{
+    border: 1px solid #fca311;
+}
