@@ -193,15 +193,51 @@ ul{
     position: relative;
 }
 
+#left-menu{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    border: solid 1px goldenrod;
+    display: none;
+    line-height: 2rem;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 
 @media(max-width:980px){
+    body{
+        max-height: 100vh;
+        box-sizing: border-box;
+        min-height: 100vh;
+    }
     #header, 
     #content, 
     #footer{
-        min-width: calc( 100vw - 4rem );
-        max-width: calc( 100vw - 4rem );
+        left: 0;
+    }
+    #header{
+        padding-left: calc( 2rem + 35px);
+        position: absolute;
+        top: 0px;
+    }
+    #content{
+        top: 89px;
+        position: absolute;
+    }
+    #footer{
+        position: absolute;
+        bottom: 0px;
+        padding-left: 0px;
     }
     #sidebar{
         display: none;
+    }
+    #inside-cont, 
+    #page-url{
+        left: 0;
+    }
+    #left-menu{
+        display: inline-block;
     }
 }

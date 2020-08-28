@@ -52,6 +52,21 @@ Global.FUNC = {
 $(window).on("load",function(){
     Global.FUNC.initWebLang("index_default");
     createSidebar();
+    if($(window).width() <= 980){
+        $("#header, #content, #footer").css("max-width", $(window).width());
+        $("#header, #content, #footer").css("min-width", $(window).width());
+        $("#header, #content, #footer").css("width", $(window).width());
+    }
+})
+
+$(window).on("resize",function(){
+    if($(window).width() <= 980){
+        $("#header, #content, #footer").css("max-width", $(window).width());
+        $("#header, #content, #footer").css("min-width", $(window).width());
+        $("#header, #content, #footer").css("width", $(window).width());
+    }else{
+        $("#header, #content, #footer").attr("style","");
+    }
 })
 
 
