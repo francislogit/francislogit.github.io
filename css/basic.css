@@ -213,6 +213,15 @@ ul{
     user-select: none; 
 }
 
+button.sample-btn{
+    border-radius: 10px;
+    border: solid 2px #14213D;
+    color: #14213D;
+    font-size: 1rem;
+    padding: 0.3rem;
+    position: relative;
+}
+
 @media(max-width:980px){
     body{
         max-height: 100vh;

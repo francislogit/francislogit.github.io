@@ -1,0 +1,17 @@
+i.success,
+.success i
+{
+    color: green;
+}
+
+i.error,
+.error i
+{
+    color: red;
+}
+
+i.info,
+.info i
+{
+    color: #14213D;
+}

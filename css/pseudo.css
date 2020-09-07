@@ -13,3 +13,15 @@
 {
     border: 1px solid #fca311;
 }
+
+button.sample-btn:hover{
+    transform: scale(1.05);
+}
+button.sample-btn:focus
+{
+    color: auto;
+    background: auto;
+    border:auto;
+    border-radius: auto;
+    outline: none;
+}

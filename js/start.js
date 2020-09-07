@@ -6,6 +6,11 @@ Global = {
         languageData: {}
     },
     FUNC:{},
+    PAGE:{
+        DATA:(function(){}),
+        EVENT:(function(){}),
+        LANG:"index_default"
+    },
     LOG:function(str){
         if( Global.VAR.enableLog == false){
             return false;
@@ -22,6 +27,28 @@ Global = {
 
 Global.FUNC = {
     initWebLang: function( current_web_target ){
+        function handelLang(data){
+            if(data !== null && data.lang !== undefined){
+                Global.VAR.languageData = data;
+                var tempLang = current_web_target.split(".");
+                var targetLang = data.lang[tempLang.shift()];
+                $.each(tempLang,function(i, val){
+                    if(targetLang !== undefined){
+                        targetLang = targetLang[val];
+                    }else{
+                        Global.LOG("Get language target error,  target is [" +current_web_target +"]" );
+                        return false;
+                    }
+                })
+                if(targetLang === undefined){
+                    Global.LOG("Get language target error,  target is [" +current_web_target +"]" );
+                    return false;
+                }
+                fillWebFont(targetLang);
+            }else{
+                Global.LOG("Get language file error.");
+            }
+        }
         if(Global.VAR.languageData === undefined || Global.VAR.languageData.lang === undefined){
             $.ajax({
                 method: "GET",
@@ -29,21 +56,13 @@ Global.FUNC = {
                 dataType : "json"
               })
             .done(function( data ) {
-                if(data !== null && data.lang !== undefined){
-                    Global.VAR.languageData = data;
-                    if(data.lang[current_web_target] !== undefined ){
-                        fillWebFont(data.lang[current_web_target]);
-                    }
-                    else{
-                        Global.LOG("Get language target error,  target is [" +current_web_target +"]" );
-                    }
-                }else{
-                    Global.LOG("Get language file error.");
-                }
+                handelLang(data);
             })
             .fail(function(){
                 Global.LOG("Get language file error.");
             });
+        }else{
+            handelLang(Global.VAR.languageData);
         }
     }
 }

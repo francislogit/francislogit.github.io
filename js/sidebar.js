@@ -82,7 +82,12 @@ function sideEvt(){
             }
             $("#page-url").append("<span> > " + $(this).find(".sidebar-text").text() + "</span>");
         }else if(targetUrl !== undefined && targetUrl.length != 0){
-            $("#inside-cont").load("inside_page/" + targetUrl);
+            $("#inside-cont").load("inside_page/" + targetUrl, function(){
+                Global.PAGE.DATA();
+                Global.PAGE.EVENT();
+                Global.FUNC.initWebLang(Global.PAGE.LANG);
+                $("#inside-cont").trigger("finishPageLoad");
+            });
             if($("#page-url .stop").length == 0){
                 $("#page-url").append("<span class='stop'> > " + $(this).find(".sidebar-text").text() + "</span>");
             }

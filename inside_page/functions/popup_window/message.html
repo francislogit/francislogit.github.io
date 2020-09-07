@@ -1,0 +1,149 @@
+<style>
+    #msg_out{
+        display: inline-block;
+        text-align: center;
+        width:100%;
+    }
+    #msg-icon,
+    #msg-text{
+        display: inline-block;
+    }
+    #msg-window{
+        top: -100px;
+        border-radius: 10px;
+        border: solid 2px;
+        display: inline-block;
+        padding: 5px;
+        position: absolute;
+        opacity: 0;
+
+    }
+    #msg-window i,
+    #msg-window span{
+        display:none;
+    }
+
+    #msg-window.success .success,
+    #msg-window.error .error,
+    #msg-window.info .info{
+        display: inline-block;
+    }
+    #msg-window.success .error,
+    #msg-window.success .info,
+    #msg-window.error .success,
+    #msg-window.error .info,
+    #msg-window.info .success,
+    #msg-window.info .error{
+        display: none;
+    }
+    #msg-window.success{
+        border-color:green;
+    }
+    #msg-window.error{
+        border-color:red;
+    }
+    #msg-window.info{
+        border-color:#14213D;
+    }
+    #msg-text{
+        padding-left: 0.5rem;
+    }
+    #msg-text .success{
+        color: green;
+    }
+    #msg-text .error{
+        color: red;
+    }
+    #msg-text .info{
+        color: #14213D;
+    }
+</style>
+<div id="msg_out">
+    <div id="msg-window" class="msg-window success">
+        <div id="msg-icon">
+            <i class="far fa-check-circle success"></i>
+            <i class="far fa-times-circle error"></i>
+            <i class="far fa-question-circle info"></i>
+        </div>
+        <div id="msg-text">
+            <span class="success" data-lang-tx="tx_success"></span>
+            <span class="error" data-lang-tx="tx_error"></span>
+            <span class="info" data-lang-tx="tx_info"></span>
+        </div>
+    </div>
+    <button id="success-btn" class="sample-btn" data-lang-tx="tx_success"></button>
+    <button id="error-btn" class="sample-btn" data-lang-tx="tx_error"></button>
+    <button id="info-btn" class="sample-btn" data-lang-tx="tx_info"></button>
+</div>
+<script>
+    CurPage = {};
+    CurPage.EVENT = (function(){
+        function doAnimate(target){
+            CurPage.animateBlock = true;
+            $(target).animate({
+                "top":"100px",
+                "opacity":1
+            },400);
+            var that = target;
+            setTimeout(function(){
+                $(that).animate({
+                    "top":"-100px",
+                    "opacity":0
+                },400,
+                function(){
+                    CurPage.animateBlock = false;
+                });
+            },800);
+        }
+        function animateEvent(){
+            $("#msg-window").on("success",function(){
+                if(CurPage.animateBlock){
+                    return false;
+                }
+                $(this).removeClass("error").removeClass("info").addClass("success");
+                doAnimate(this);
+            })
+            $("#msg-window").on("error",function(){
+                if(CurPage.animateBlock){
+                    return false;
+                }
+                $(this).removeClass("success").removeClass("info").addClass("error");
+                doAnimate(this);
+            })
+            $("#msg-window").on("info",function(){
+                if(CurPage.animateBlock){
+                    return false;
+                }
+                $(this).removeClass("error").removeClass("success").addClass("info");
+                doAnimate(this);
+            })
+        }
+        function buttonEvent(){
+            $("#success-btn").on("click",function(){
+                $("#msg-window").trigger("success");
+            });
+            $("#error-btn").on("click",function(){
+                $("#msg-window").trigger("error");
+            });
+            $("#info-btn").on("click",function(){
+                $("#msg-window").trigger("info");
+            });
+        }
+        function init(){
+            buttonEvent();
+            animateEvent();
+        }
+        return init();
+    })
+    CurPage.DATA = (function(){
+        function init(){
+
+        }
+        return init();
+    })
+    Global.PAGE = {
+        DATA:CurPage.DATA,
+        EVENT:CurPage.EVENT,
+        LANG: "functions.popup_window.message"
+    }
+</script>
