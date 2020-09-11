@@ -101,6 +101,49 @@ function sideEvt(){
         }
         $("#page-url").find("span").last().remove();
     });
+    $("#left-menu").on("click",function(){
+        if(Global.VAR.isOpeningMenu == true){
+            return false;
+        }
+        Global.VAR.isOpeningMenu = true;
+        if(!$("#sidebar").hasClass("open")){
+            $("#sidebar").animate({
+                "left":"0rem",
+                "opacity":"1"
+            },500,function(){
+                Global.VAR.isOpeningMenu = false;
+            });
+            $("#sidebar").addClass("open");
+            $("#content").addClass("cover");
+        }
+    })
+    $("#content").on("click",function(){
+        if(!$("#content").hasClass("cover")){
+            return false;
+        }
+        if($("#sidebar").hasClass("open")){
+            $("#sidebar").trigger("closeMenu");
+        }
+    });
+    $("#sidebar").on("closeMenu",function(){
+        Global.VAR.isOpeningMenu = true;
+        $("#sidebar").animate({
+            "left":"-13rem",
+            "opacity":"0"
+        },500,function(){
+            Global.VAR.isOpeningMenu = false;
+            $("#content").removeClass("cover");
+        });
+        $("#sidebar").removeClass("open");
+    });
+    $("#sidebar").on("click",function(event){
+        event.stopPropagation();
+    })
+    $("#inside-cont").on("finishPageLoad",function(){
+        if($("#sidebar").hasClass("open")){
+            $("#sidebar").trigger("closeMenu");
+        }
+    });
 }
 function sidebarSwitch(currentLevel, targetLevel, targetObj){
     if(targetLevel < currentLevel){

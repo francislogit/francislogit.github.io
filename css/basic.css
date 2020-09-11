@@ -73,6 +73,22 @@ body{
     padding-top: 6%;
 }
 
+h6 {
+    display: block;
+    font-size: 1.2rem;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding: 0.7rem;
+    font-weight: bold;
+}
+
+#inside_title{
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #14213D;
+}
+
 
 #header, 
 #content, 
@@ -131,6 +147,7 @@ body{
     padding-bottom: 0.5rem;
     border-top: #E5E5E5 solid 0.5rem;
     padding-left: 1rem;
+    padding-right: 1rem;
     border-right: #E5E5E5 solid 0.5rem;
     margin-bottom: 0.5rem;
 }
@@ -251,11 +268,18 @@ button.sample-btn{
         padding-left: 0px;
     }
     #sidebar{
-        display: none;
+        left:-13rem;
+        min-height: calc( 100% - 11rem );
+        position: fixed;
+        top: 4rem;
+        z-index: 2;
+        opacity: 0;
     }
     #inside-cont, 
     #page-url{
         left: 0;
+        width: 100vw;
+        height: auto;
     }
     #left-menu{
         display: inline-block;

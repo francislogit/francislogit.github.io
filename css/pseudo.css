@@ -25,3 +25,17 @@ button.sample-btn:focus
     border-radius: auto;
     outline: none;
 }
+@media(max-width:980px){
+    #content.cover::before{
+        content: "";
+        display: inline-block;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        background-color: black;
+        z-index: 1;
+        top: 0;
+        left: 0;
+    }
+}

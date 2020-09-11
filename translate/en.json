@@ -3,11 +3,13 @@
         "index_default" : {
             "tx_title": "Test Web",
             "tx_header_title" : "Francis Demo",
-            "tx_footer_text": "Author: Francis Lo, Version: 0.1"
+            "tx_footer_text": "Author: Francis Lo, Version: 0.1",
+            "tx_home": "Home"
         },
         "functions":{
             "popup_window":{
                 "message":{
+                    "tx_title": "Message",
                     "tx_success": "Success",
                     "tx_error": "Error",
                     "tx_info": "Information",
